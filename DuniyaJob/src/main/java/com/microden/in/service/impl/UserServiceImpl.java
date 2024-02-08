@@ -1,8 +1,9 @@
 package com.microden.in.service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.microden.in.UserRepository;
@@ -16,6 +17,8 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserRepository repository;
+	@Autowired
+	private JavaMailSender javaMailSender;
 
 	@Override
 	public UserEntity registeruser(Registration user) {
@@ -45,6 +48,21 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public  Boolean getOtp(String emailAdress, String otp) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("officialkanhaiya121@gmail.com");
+        message.setTo(emailAdress);
+        message.setSubject("Your OTP for Verification");
+        message.setText("Your OTP is: " + otp);
+
+       javaMailSender.send(message);
+	return true;
+	
+
+	}
+	
 	
 	
 	
