@@ -16,8 +16,8 @@ List<UserEntity> getUsers();
 UserEntity getuser(Long id);
 
  Boolean getOtp(String emailAdress, String otp);
-
-
+ 
+ String verifyOtp(String email, String Otp); 
 
 
 }

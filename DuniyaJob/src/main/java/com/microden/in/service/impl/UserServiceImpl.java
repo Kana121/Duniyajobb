@@ -1,6 +1,7 @@
 package com.microden.in.service.impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,6 +20,7 @@ public class UserServiceImpl implements UserService{
 	private UserRepository repository;
 	@Autowired
 	private JavaMailSender javaMailSender;
+
 
 	@Override
 	public UserEntity registeruser(Registration user) {
@@ -62,8 +64,13 @@ public class UserServiceImpl implements UserService{
 	
 
 	}
+
+	@Override
+	public String verifyOtp(String email, String Otp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	
-	
+
 	
 }

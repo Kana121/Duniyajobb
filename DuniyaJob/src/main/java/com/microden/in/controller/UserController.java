@@ -1,5 +1,6 @@
 package com.microden.in.controller;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import com.microden.in.service.UserService;
 @CrossOrigin(origins = "http://localhost:3000")
 
 public class UserController {
-	
+
 @Autowired
 private UserService userservice;
 
@@ -30,8 +31,14 @@ public UserEntity registeruser(@RequestBody Registration user){
 //working on opt
 @PostMapping("/get-otp")
 public Boolean getOtp(@RequestParam String emailAdress, String otp ) {
-    
-    return userservice.getOtp(emailAdress, otp);
+    String newotp = RandomStringUtils.randomNumeric(6);
+
+    return userservice.getOtp(emailAdress, newotp);
 	
 }
+@PostMapping("/verify-otp")
+public String verifyOtp(@RequestBody String email, String Otp) {
+	return "otp verified Succesfully";
+}
+
 }
