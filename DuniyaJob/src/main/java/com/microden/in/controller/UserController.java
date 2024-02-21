@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microden.in.dto.JobPost;
 import com.microden.in.dto.Registration;
 import com.microden.in.entity.UserEntity;
 import com.microden.in.service.UserService;
@@ -40,5 +41,8 @@ public Boolean getOtp(@RequestParam String emailAdress, String otp ) {
 public String verifyOtp(@RequestBody String email, String Otp) {
 	return "otp verified Succesfully";
 }
-
+@PostMapping("/post")
+public UserEntity saveJob(@RequestBody JobPost job) {
+	return userservice.saveJob(job);
+}
 }

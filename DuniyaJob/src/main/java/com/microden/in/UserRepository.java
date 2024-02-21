@@ -6,6 +6,6 @@ import com.microden.in.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
 	UserEntity findByemailAdress(String emailAdress);
-
- 
+     
+	UserEntity findByTitle(String Title);
 }

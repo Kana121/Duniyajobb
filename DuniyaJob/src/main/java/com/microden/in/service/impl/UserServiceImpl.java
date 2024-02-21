@@ -8,6 +8,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.microden.in.UserRepository;
+import com.microden.in.dto.JobPost;
 import com.microden.in.dto.Login;
 import com.microden.in.dto.Registration;
 import com.microden.in.entity.UserEntity;
@@ -69,6 +70,14 @@ public class UserServiceImpl implements UserService{
 	public String verifyOtp(String email, String Otp) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public UserEntity saveJob(JobPost job) {
+		UserEntity job1=new UserEntity();
+		job1.setTitle(job.getTitle());
+		job1.setDescription(job.getDescription());
+		return repository.save(job1);
 	}
 	
 
