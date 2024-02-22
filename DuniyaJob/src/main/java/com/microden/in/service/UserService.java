@@ -19,8 +19,17 @@ UserEntity getuser(Long id);
  Boolean getOtp(String emailAdress, String otp);
  
  String verifyOtp(String email, String Otp); 
-
+ 
+// for posting job
  UserEntity saveJob(JobPost job);
+ 
+ List<UserEntity> getAllJobs();
+ 
+ 
+ UserEntity getJobByjobid(Long jobid);
+ 
+
+ UserEntity  deleteJob(Long jobid); 
 
 
 }
