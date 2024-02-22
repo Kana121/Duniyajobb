@@ -19,4 +19,8 @@ private String name;
 private String emailAdress;
 private String password;
 private String phno;
+//for jobpost
+private long jobid;
+private String title;
+private String description;
 }

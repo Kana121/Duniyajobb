@@ -1,6 +1,7 @@
 package com.microden.in.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -8,6 +9,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.microden.in.UserRepository;
+import com.microden.in.dto.JobPost;
 import com.microden.in.dto.Login;
 import com.microden.in.dto.Registration;
 import com.microden.in.entity.UserEntity;
@@ -68,9 +70,45 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public String verifyOtp(String email, String Otp) {
 		// TODO Auto-generated method stub
-		return null;
+		return "otp verified successfully";
 	}
-	
 
-	
-}
+	@Override
+	public UserEntity saveJob(JobPost job) {
+		UserEntity job1=new UserEntity();
+		job1.setJobid(job.getJobid());
+		job1.setTitle(job.getTitle());
+		job1.setDescription(job.getDescription());
+		return repository.save(job1);
+	}
+
+	@Override
+	public List<UserEntity> getAllJobs() {
+		// TODO Auto-generated method stub
+		return repository.findAll();
+	}
+
+	@Override
+	public UserEntity getJobByjobid(Long jobid) {
+		// TODO Auto-generated method stub
+		return repository.findByjobid(jobid);
+		  
+	}
+
+	@Override
+	public UserEntity deleteJob(Long jobid) {
+	    Optional<UserEntity> deletedJob = repository.findById(jobid);
+
+	    if (deletedJob.isPresent()) {
+	        UserEntity deletedEntity = deletedJob.get();
+	        repository.deleteById(jobid);
+	        return deletedEntity;
+	    } else {
+	        // Return a default or placeholder UserEntity object, or handle it differently based on your needs
+	        return new UserEntity(); // Replace this with your logic
+	    }
+	}
+
+
+	}
+
